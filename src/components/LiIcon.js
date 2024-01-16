@@ -1,17 +1,11 @@
 import React from 'react';
 import { useScroll, motion } from 'framer-motion';
+
 const LiIcon = ({ reference }) => {
   const { scrollYProgress } = useScroll({
     target: reference,
     offset: ['center end', 'center center'],
   });
-
-  const [YProgress, setYProgress] = React.useState(0);
-
-  React.useEffect(() => {
-    // hook into the onChange, store the current value as state.
-    setYProgress(scrollYProgress);
-  }, [scrollYProgress]);
 
   return (
     <figure className="absolute left-0 stroke-dark">
@@ -28,7 +22,7 @@ const LiIcon = ({ reference }) => {
           r="20"
           className="stroke-[5px] fill-light"
           style={{
-            pathLength: YProgress,
+            pathLength: scrollYProgress,
           }}
         />
         <circle
